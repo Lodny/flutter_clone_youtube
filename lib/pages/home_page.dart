@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clone_youtube/controller/home_controller.dart';
 import 'package:flutter_clone_youtube/pages/plus_body.dart';
+import 'package:flutter_clone_youtube/pages/search_body.dart';
+import 'package:flutter_clone_youtube/pages/subscribe_body.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 import 'home_body.dart';
+import 'library_body.dart';
 
 class HomePage extends GetView<HomeController> {
   const HomePage({super.key});
@@ -16,8 +19,16 @@ class HomePage extends GetView<HomeController> {
         switch(controller.currentBottomNavigationBarIndex.value) {
           case 0:
             return HomeBody();
-          default:
+          case 1:
+            return SearchBody();
+          case 2:
             return PlusBody();
+          case 3:
+            return SubscribeBody();
+          case 4:
+            return LibraryBody();
+          default:
+            return HomeBody();
         }
       }),
       bottomNavigationBar: Obx( () => BottomNavigationBar(
