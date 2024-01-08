@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clone_youtube/controller/home_controller.dart';
+import 'package:flutter_clone_youtube/pages/plus_body.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+
+import 'home_body.dart';
 
 class HomePage extends GetView<HomeController> {
   const HomePage({super.key});
@@ -9,14 +12,14 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Youtube Clone App'),
-      ),
-      body: Column(
-        children: [
-          Text('hi'),
-        ],
-      ),
+      body: Obx(() {
+        switch(controller.currentBottomNavigationBarIndex.value) {
+          case 0:
+            return HomeBody();
+          default:
+            return PlusBody();
+        }
+      }),
       bottomNavigationBar: Obx( () => BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           currentIndex: controller.currentBottomNavigationBarIndex.value,
