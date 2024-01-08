@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_clone_youtube/component/youtube_bottom_sheet.dart';
 import 'package:get/get.dart';
 
 enum RouteName {
@@ -16,6 +18,14 @@ class HomeController extends GetxService {
   RxInt currentBottomNavigationBarIndex = 0.obs;
 
   void changeBottomNavigationBarIndex(int index) {
-    currentBottomNavigationBarIndex(index);
+    if (RouteName.values[index] == RouteName.Plus) {
+      _showBottomSheet();
+    } else {
+      currentBottomNavigationBarIndex(index);
+    }
+  }
+
+  void _showBottomSheet() {
+    Get.bottomSheet(YoutubeBottomSheet());
   }
 }

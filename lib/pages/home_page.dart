@@ -21,22 +21,24 @@ class HomePage extends GetView<HomeController> {
             return HomeBody();
           case RouteName.Search:
             return SearchBody();
-          case RouteName.Plus:
-            return PlusBody();
           case RouteName.Subscribe:
             return SubscribeBody();
           case RouteName.Library:
             return LibraryBody();
-          default:
-            return HomeBody();
+
+          case RouteName.Plus:
+            break;
+            // return PlusBody();
         }
+
+        return Container();
       }),
       bottomNavigationBar: Obx( () => BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           currentIndex: controller.currentBottomNavigationBarIndex.value,
           showSelectedLabels: true,
           selectedItemColor: Colors.black,
-          onTap: controller.currentBottomNavigationBarIndex,
+          onTap: controller.changeBottomNavigationBarIndex,
           items: [
             BottomNavigationBarItem(
               icon: SvgPicture.asset("assets/svg/icons/home_off.svg"),
