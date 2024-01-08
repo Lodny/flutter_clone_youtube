@@ -16,16 +16,16 @@ class HomePage extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Obx(() {
-        switch(controller.currentBottomNavigationBarIndex.value) {
-          case 0:
+        switch(RouteName.values[controller.currentBottomNavigationBarIndex.value]) {
+          case RouteName.Home:
             return HomeBody();
-          case 1:
+          case RouteName.Search:
             return SearchBody();
-          case 2:
+          case RouteName.Plus:
             return PlusBody();
-          case 3:
+          case RouteName.Subscribe:
             return SubscribeBody();
-          case 4:
+          case RouteName.Library:
             return LibraryBody();
           default:
             return HomeBody();
